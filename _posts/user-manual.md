@@ -3,12 +3,11 @@ layout: post
 title:  use-manual
 date:   2017-06-20 00:00:00 +0800
 categories: document
+tag: 教程
 ---
 
 * content
 {:toc}
-
-
 
 
 ## 第一章 概述
