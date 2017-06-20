@@ -312,8 +312,8 @@ history作用：保存日志，数据保存时限为7天。
 1. 根据EventID进行查询：
 ![](../styles/images/history.png)
 2. 点击下拉按钮，查看具体内容：
-![](/styles/images/showHistory.png)
-![](/styles/images/historyContent.png)
+![](/document/styles/images/showHistory.png)
+![](/document/styles/images/historyContent.png)
 
 
 ## 第八章 常用流程
