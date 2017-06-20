@@ -10,15 +10,24 @@ tag: 教程
 {:toc}
 
 
-## 第一章 概述
+ 第一章 概述
+====================================
+
 conalog是集数据采集，解析，状态管理，日志管理为一体的工具，可以有效的对自编制脚本进行管理和监控，也可以监控orientsoft软件组件的状态,主要模块分为五部分：cert，collector，parser，status，history。
-## 第二章 部署与安装
-### 2.1 环境要求
+ 第二章 部署与安装
+ ====================================
+
+ 2.1 环境要求
+---------------------
+
 Linux版本：  
 Node版本：6.9 (LTS)  
 Mongo版本：  
-Redis版本：  
-### 2.2 前台
+Redis版本：
+
+ 2.2 前台
+---------------------
+
 1. 获取conglog-front代码；
 2. 修改/conalog-front/config 目录下的config.js 文件，将conalogHost的值改为虚拟机的IP地址；
 
@@ -50,7 +59,9 @@ module.exports = config;
 5. 编译：gulp go；
 6. 启动：npm start；
 
-### 2.3 后台
+2.3 后台
+---------------------
+
 1. 获取conalog代码;
 2. 修改/ conalog /config 目录下的config.js 文件，将conalogHost，conalogFrontHost 以及nanomsgHost 的值改为虚拟机的IP地址；
 
@@ -87,12 +98,16 @@ module.exports = config;
 5. 编译：gulp go；
 6. 启动：node bin/www；
 
-### 2.4 常见问题
+ 2.4 常见问题
+ ---------------------
+
 1. 每次修改配置文件后要运行 gulp go 使修改生效;
 2. 执行gulp install报错 "无法找到gulp" 时即执行 'npm install -g gulp'；
 3. 运行npm i命令后遇到缺少模块的问题时，npm install 该模块；
 
-### 2.5 访问网址
+ 2.5 访问网址
+ ---------------------
+
 conalogHost:conalogFrontPort  
 如：'192.168.0.244:7527'  
 
