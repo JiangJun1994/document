@@ -6531,6 +6531,7 @@ hr {
   /*height: auto;*/
   height:50px;
   width:50px;
+  margin-bottom: 5px;
 }
 .docs-nav .navbar-nav > li > a,
 .docs-nav .navbar-nav > li > span {
