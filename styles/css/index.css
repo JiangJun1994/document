@@ -6353,11 +6353,10 @@ hr {
   /*}*/
 /*}*/
 .footer {
-  /*position:relative;*/
-  /*bottom:10px;*/
-  padding-top: 20px;
+  /*position:absolute;*/
+  /*padding-top: 20px;*/
   padding-bottom: 20px;
-  /*margin-top: 200px;*/
+  margin-top: 200px;
   color: #777;
   background: #fff;
   text-align: center;
