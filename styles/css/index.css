@@ -6415,7 +6415,6 @@ hr {
 .docs-content {
   position: relative;
   overflow: hidden;
-  min-height:700px;
   background: #fff;
   background-color: #fff;
   padding: 1px 60px 80px 60px;
