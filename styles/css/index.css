@@ -6353,7 +6353,7 @@ hr {
   /*}*/
 /*}*/
 .footer {
-  position:absolute;
+  position:relative;
   bottom:10px;
   padding-top: 20px;
   padding-bottom: 20px;
