@@ -181,7 +181,7 @@ collector作用：执行命令，采集数据。
 
 1. active collector：  
 填写规范：  
-Name: 无要求（**输出数据的redis通道名默认为 ac_name**）;  
+Name: 无要求（**输出数据的redis通道名默认为 ac_name**）;
 Type:  
 &nbsp; &nbsp; &nbsp; &nbsp;interval : 每间隔一段时间执行一次命令；  
 &nbsp; &nbsp; &nbsp; &nbsp;time ：每天定点执行命令；  
@@ -211,7 +211,7 @@ Description: collector usage&source&description；
 &nbsp;3.1 点击添加按钮：
 ![](/styles/images/addAgentCollector.png)
 &nbsp;3.2 弹出添加框，填写信息：  
-&nbsp;&nbsp;&nbsp;填写规范  
+&nbsp;&nbsp;&nbsp;填写规范
 &nbsp;&nbsp;&nbsp;Name: 无要求 （**输出数据的redis通道名默认为 agt_name**）；  
 &nbsp;&nbsp;&nbsp;Parameter: 文件名的正则表达式;    
 &nbsp;&nbsp;&nbsp;Encoding: 根据电脑系统选择对应的编码；  
@@ -268,7 +268,7 @@ Name：esb   (无要求)；
 Path：esb.js   (parser脚本的路径，可以使用相对路径，默认当前目录为CONALOG_PATH/parser/);    
 Parameter：esb=1   (脚本对应的参数)；  
 InputChannel：ac\_mobile (输入数据通道名)；  
-OutputChannel：esb (输出数据通道名，**Conalog会自动给输出通道名加前缀p\_**)；  
+OutputChannel：esb (输出数据通道名，**Conalog会自动给输出通道名加前缀p\_**)；
 InputType：RedisChannel  (RedisChannel/NanomsgQueue);   
 OutputType：RedisChannel  (RedisChannel/NanomsgQueue);
 Remark：input:... output:{...}   (parser脚本作用描述，输入输出数据格式等);
