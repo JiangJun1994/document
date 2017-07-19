@@ -5,8 +5,8 @@
     <description>Actually, less is more!</description>
     <link>http://www.hifreud.com/</link>
     <atom:link href="http://www.hifreud.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 19 Jul 2017 17:37:30 +0800</pubDate>
-    <lastBuildDate>Wed, 19 Jul 2017 17:37:30 +0800</lastBuildDate>
+    <pubDate>Wed, 19 Jul 2017 21:04:31 +0800</pubDate>
+    <lastBuildDate>Wed, 19 Jul 2017 21:04:31 +0800</lastBuildDate>
     <generator>Jekyll v2.5.0</generator>
     
       <item>
@@ -200,28 +200,25 @@ Redis版本：^3.0&lt;/p&gt;
   &lt;li&gt;修改/conalog-front/config 目录下的config.js 文件，将conalogHost的值改为虚拟机的IP地址；&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;&lt;code&gt;
-conalogHost:’192.168.0.244’;
-&lt;/code&gt;
-&lt;code&gt;
-//config.js配置文件
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;conalogHost:’192.168.0.244’;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;//config.js配置文件
 var config = {
-  logLevel: &#39;info&#39;,
-  conalogHost: &#39;192.168.0.244&#39;,
+  logLevel: &amp;#39;info&amp;#39;,
+  conalogHost: &amp;#39;192.168.0.244&amp;#39;,
   conalogPort: 17527,
   conalogFrontPort: 7527,
-  mongoUrl: &#39;mongodb://127.0.0.1:27017/conalog&#39;,
-  redisUrl: &#39;redis://127.0.0.1:6379&#39;,
-  activeCollectorPrefix: &#39;ac_&#39;,
-  passiveCollectorPrefix: &#39;pc_&#39;,
-  apiGatewayHost: &#39;apigateway&#39;,
+  mongoUrl: &amp;#39;mongodb://127.0.0.1:27017/conalog&amp;#39;,
+  redisUrl: &amp;#39;redis://127.0.0.1:6379&amp;#39;,
+  activeCollectorPrefix: &amp;#39;ac_&amp;#39;,
+  passiveCollectorPrefix: &amp;#39;pc_&amp;#39;,
+  apiGatewayHost: &amp;#39;apigateway&amp;#39;,
   apiGatewayPort: 1234,
-  apiGatewayToken: &#39;12345&#39;,
-  apiGatewayUid: &#39;67890&#39;,
-  apiGatewayType: &#39;user&#39;
+  apiGatewayToken: &amp;#39;12345&amp;#39;,
+  apiGatewayUid: &amp;#39;67890&amp;#39;,
+  apiGatewayType: &amp;#39;user&amp;#39;
 }
-module.exports = config;
-&lt;/code&gt;&lt;/p&gt;
+module.exports = config;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;ol&gt;
   &lt;li&gt;安装模块：npm i；&lt;/li&gt;
@@ -237,37 +234,37 @@ module.exports = config;
   &lt;li&gt;修改/ conalog /config 目录下的config.js 文件，将conalogHost，conalogFrontHost 以及nanomsgHost 的值改为虚拟机的IP地址；&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;&lt;code&gt;
-conalogHost:’192.168.0.244’;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;conalogHost:’192.168.0.244’;
 conalogFrontHost:’192.168.0.244’;
-nanomsgHost:’192.168.0.244’;
-&lt;/code&gt;
-&lt;code&gt;
-//config.js配置文件
+nanomsgHost:’192.168.0.244’;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;//config.js配置文件
 var config = {
-  logLevel: &#39;info&#39;,
+  logLevel: &amp;#39;info&amp;#39;,
   logLifespan: 604800000, // 7 days, in ms
   userAuthSwitch: false,
-  conalogHost: &#39;192.168.0.244&#39;,
+  conalogHost: &amp;#39;192.168.0.244&amp;#39;,
   conalogPort: 17527,
-  conalogFrontHost: &#39;192.168.0.244&#39;,
+  conalogFrontHost: &amp;#39;192.168.0.244&amp;#39;,
   conalogFrontPort: 7527,
-  mongoUrl: &#39;mongodb://127.0.0.1:27017/conalog&#39;,
-  redisUrl: &#39;redis://127.0.0.1:6379&#39;,
-  nanomsgProtocol: &#39;tcp://&#39;,
-  nanomsgHost: &#39;192.168.0.244&#39;,
+  mongoUrl: &amp;#39;mongodb://127.0.0.1:27017/conalog&amp;#39;,
+  redisUrl: &amp;#39;redis://127.0.0.1:6379&amp;#39;,
+  nanomsgProtocol: &amp;#39;tcp://&amp;#39;,
+  nanomsgHost: &amp;#39;192.168.0.244&amp;#39;,
   nanomsgRequestPort: 17537,
   nanomsgStartPort: 17627,
   nanomsgEndPort: 17927,
-  filebeatChannel: &#39;conalog-filebeat&#39;,
-  parserPathPrefix: &#39;./parser/&#39;
+  filebeatChannel: &amp;#39;conalog-filebeat&amp;#39;,
+  parserPathPrefix: &amp;#39;./parser/&amp;#39;
 }
-module.exports = config;
-&lt;/code&gt;
-3. 安装模块：npm i；
-4. 执行：gulp install；
-5. 编译：gulp go；
-6. 启动：node bin/www；&lt;/p&gt;
+module.exports = config;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;安装模块：npm i；&lt;/li&gt;
+  &lt;li&gt;执行：gulp install；&lt;/li&gt;
+  &lt;li&gt;编译：gulp go；&lt;/li&gt;
+  &lt;li&gt;启动：node bin/www；&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;h2 id=&quot;section-5&quot;&gt;2.4 常见问题&lt;/h2&gt;
 
@@ -365,11 +362,11 @@ Description: collector usage &amp;amp; source &amp;amp; description；
   &lt;li&gt;passive collector：&lt;br /&gt;
 填写规范：&lt;br /&gt;
 Name: 无要求（&lt;strong&gt;输出数据的redis通道名默认为 pc_name&lt;/strong&gt;);&lt;br /&gt;
-Type:  
-       LongScript: 执行用户指定的命令；&lt;br /&gt;
-       File Tail: 执行 tail -F 命令（快捷方式）；  
-Command: 执行命令；  
-Parameter: 参数；&lt;br /&gt;
+Type:
+       LongScript: 执行用户指定的命令;
+       File Tail: 执行 tail -F 命令（快捷方式);    
+Command: 执行命令;    
+Parameter: 参数;
 Host: 虚拟机IP；&lt;br /&gt;
 Encoding: 根据电脑系统选择对应的编码；&lt;br /&gt;
 Channel: redis/nanomsg;&lt;br /&gt;
@@ -381,7 +378,7 @@ Description: collector usage&amp;amp;source&amp;amp;description；
  3.2 弹出添加框，填写信息：&lt;br /&gt;
    填写规范&lt;br /&gt;
    Name: 无要求 （&lt;strong&gt;输出数据的redis通道名默认为 agt_name&lt;/strong&gt;）；&lt;br /&gt;
-   Parameter: 文件名的正则表达式；  
+   Parameter: 文件名的正则表达式;    
    Encoding: 根据电脑系统选择对应的编码；&lt;br /&gt;
    Channel: redis/nanomsg;&lt;br /&gt;
    Description: collector usage &amp;amp; source &amp;amp; description；
@@ -434,12 +431,12 @@ Description: collector usage&amp;amp;source&amp;amp;description；
   &lt;li&gt;弹出添加框，填写内容，所有选项均为必填：&lt;br /&gt;
 填写规范：&lt;br /&gt;
 Name：esb   (无要求)；&lt;br /&gt;
-Path：esb.js   (parser脚本的路径，可以使用相对路径，默认当前目录为CONALOG_PATH/parser/)；  
+Path：esb.js   (parser脚本的路径，可以使用相对路径，默认当前目录为CONALOG_PATH/parser/);    
 Parameter：esb=1   (脚本对应的参数)；&lt;br /&gt;
 InputChannel：ac_mobile (输入数据通道名)；&lt;br /&gt;
 OutputChannel：esb (输出数据通道名，&lt;strong&gt;Conalog会自动给输出通道名加前缀p_&lt;/strong&gt;)；&lt;br /&gt;
-InputType：RedisChannel   (RedisChannel/NanomsgQueue);  
-OutputType：RedisChannel   (RedisChannel/NanomsgQueue);&lt;br /&gt;
+InputType：RedisChannel  (RedisChannel/NanomsgQueue);   
+OutputType：RedisChannel  (RedisChannel/NanomsgQueue);
 Remark：input:… output:{…}   (parser脚本作用描述，输入输出数据格式等);
 &lt;img src=&quot;/styles/images/addParserContent.png&quot; alt=&quot;&quot; /&gt;&lt;/li&gt;
   &lt;li&gt;添加成功：

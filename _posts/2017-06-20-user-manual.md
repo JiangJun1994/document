@@ -34,10 +34,12 @@ Redis版本：^3.0
 1. 获取conglog-front代码；
 2. 修改/conalog-front/config 目录下的config.js 文件，将conalogHost的值改为虚拟机的IP地址；
 
-``` 
+
+{% highlight bash %}
 conalogHost:’192.168.0.244’;
-```
-``` 
+{% endhighlight %}
+
+{% highlight bash %}
 //config.js配置文件
 var config = {
   logLevel: 'info',
@@ -55,7 +57,7 @@ var config = {
   apiGatewayType: 'user'
 }
 module.exports = config;
-```
+{% endhighlight %}
 
 3. 安装模块：npm i；
 4. 执行：gulp install；
@@ -68,12 +70,12 @@ module.exports = config;
 1. 获取conalog代码;
 2. 修改/ conalog /config 目录下的config.js 文件，将conalogHost，conalogFrontHost 以及nanomsgHost 的值改为虚拟机的IP地址；
 
-``` 
+{% highlight bash %}
 conalogHost:’192.168.0.244’;
 conalogFrontHost:’192.168.0.244’;
 nanomsgHost:’192.168.0.244’;
-```
-``` 
+{% endhighlight %}
+{% highlight bash %}
 //config.js配置文件
 var config = {
   logLevel: 'info',
@@ -94,7 +96,7 @@ var config = {
   parserPathPrefix: './parser/'
 }
 module.exports = config;
-```
+{% endhighlight %}
 3. 安装模块：npm i；
 4. 执行：gulp install；
 5. 编译：gulp go；
@@ -195,11 +197,11 @@ Description: collector usage & source & description；
 2. passive collector：  
 填写规范：  
 Name: 无要求（**输出数据的redis通道名默认为 pc_name**);  
-Type:  
-&nbsp; &nbsp; &nbsp; &nbsp;LongScript: 执行用户指定的命令；  
-&nbsp; &nbsp; &nbsp; &nbsp;File Tail: 执行 tail -F 命令（快捷方式）；  
-Command: 执行命令；  
-Parameter: 参数；  
+Type:
+&nbsp; &nbsp; &nbsp; &nbsp;LongScript: 执行用户指定的命令;
+&nbsp; &nbsp; &nbsp; &nbsp;File Tail: 执行 tail -F 命令（快捷方式);    
+Command: 执行命令;    
+Parameter: 参数;
 Host: 虚拟机IP；  
 Encoding: 根据电脑系统选择对应的编码；  
 Channel: redis/nanomsg;  
@@ -211,7 +213,7 @@ Description: collector usage&source&description；
 &nbsp;3.2 弹出添加框，填写信息：  
 &nbsp;&nbsp;&nbsp;填写规范  
 &nbsp;&nbsp;&nbsp;Name: 无要求 （**输出数据的redis通道名默认为 agt_name**）；  
-&nbsp;&nbsp;&nbsp;Parameter: 文件名的正则表达式；  
+&nbsp;&nbsp;&nbsp;Parameter: 文件名的正则表达式;    
 &nbsp;&nbsp;&nbsp;Encoding: 根据电脑系统选择对应的编码；  
 &nbsp;&nbsp;&nbsp;Channel: redis/nanomsg;  
 &nbsp;&nbsp;&nbsp;Description: collector usage & source & description；
@@ -263,12 +265,12 @@ parser的功能：parser通过调用脚本把文件中的文本数据转换成�
 2. 弹出添加框，填写内容，所有选项均为必填：  
 填写规范：  
 Name：esb   (无要求)；  
-Path：esb.js   (parser脚本的路径，可以使用相对路径，默认当前目录为CONALOG_PATH/parser/)；  
+Path：esb.js   (parser脚本的路径，可以使用相对路径，默认当前目录为CONALOG_PATH/parser/);    
 Parameter：esb=1   (脚本对应的参数)；  
 InputChannel：ac\_mobile (输入数据通道名)；  
 OutputChannel：esb (输出数据通道名，**Conalog会自动给输出通道名加前缀p\_**)；  
-InputType：RedisChannel   (RedisChannel/NanomsgQueue);  
-OutputType：RedisChannel   (RedisChannel/NanomsgQueue);  
+InputType：RedisChannel  (RedisChannel/NanomsgQueue);   
+OutputType：RedisChannel  (RedisChannel/NanomsgQueue);
 Remark：input:... output:{...}   (parser脚本作用描述，输入输出数据格式等);
 ![](/styles/images/addParserContent.png)
 3. 添加成功：
