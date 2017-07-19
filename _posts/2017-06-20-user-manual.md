@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  use-manual
+title:  user-manual
 date:   2017-06-20 00:00:00 +0800
 categories: document
 tag: 教程
@@ -13,7 +13,8 @@ tag: 教程
  第一章 概述
 ====================================
 
-conalog是集数据采集，解析，状态管理，日志管理为一体的工具，可以有效的对自编制脚本进行管理和监控，也可以监控orientsoft软件组件的状态,主要模块分为五部分：cert，collector，parser，status，history。
+conalog是集数据采集，解析，状态管理，日志管理为一体的工具，可以有效的对自编制脚本进行管理和监控，
+也可以监控orientsoft软件组件的状态,主要模块分为五部分：cert，collector，parser，status，history。
 
 
  第二章 部署与安装
@@ -22,10 +23,10 @@ conalog是集数据采集，解析，状态管理，日志管理为一体的工�
  2.1 环境要求
 ---------------------
 
-Linux版本：  
+Linux版本：^3.0  
 Node版本：6.9 (LTS)  
-Mongo版本：  
-Redis版本：
+Mongo版本：^3.0  
+Redis版本：^3.0
 
  2.2 前台
 ---------------------
@@ -36,7 +37,6 @@ Redis版本：
 ``` 
 conalogHost:’192.168.0.244’;
 ```
-	
 ``` 
 //config.js配置文件
 var config = {
@@ -56,6 +56,7 @@ var config = {
 }
 module.exports = config;
 ```
+
 3. 安装模块：npm i；
 4. 执行：gulp install；
 5. 编译：gulp go；
@@ -72,7 +73,6 @@ conalogHost:’192.168.0.244’;
 conalogFrontHost:’192.168.0.244’;
 nanomsgHost:’192.168.0.244’;
 ```
-   
 ``` 
 //config.js配置文件
 var config = {
@@ -98,84 +98,88 @@ module.exports = config;
 3. 安装模块：npm i；
 4. 执行：gulp install；
 5. 编译：gulp go；
-6. 启动：node bin/www；
+6. 启动：node bin/www；  
 
  2.4 常见问题
- ---------------------
+---------------------
 
-1. 每次修改配置文件后要运行 gulp go 使修改生效;
-2. 执行gulp install报错 "无法找到gulp" 时即执行 'npm install -g gulp'；
-3. 运行npm i命令后遇到缺少模块的问题时，npm install 该模块；
+-  每次修改代码后要运行 gulp go 使修改生效;
+-  执行gulp install报错 "无法找到gulp" 时即执行 'npm install -g gulp'；
+-  运行npm i命令后遇到缺少模块的问题时，npm install 该模块；
 
  2.5 访问网址
- ---------------------
+---------------------
 
 conalogHost:conalogFrontPort  
 如：'192.168.0.244:7527'  
 
-登录界面：（账号：admin 密码：admininitpass）
-![](/document/styles/images/logIn.png)
+登录界面：（账号：admin 初始密码：admininitpass）
+![](/styles/images/logIn.png)
 
 登录成功：
-![](/document/styles/images/homePage.png)
+![](/styles/images/homePage.png)
 
 
  第三章 cert
 ====================================
 
-cert功能：通过ssh连接登陆虚拟机，随后可以执行Shell命令。
+cert功能：存储用于远程SSH登录的账号。Conalog可以通过ssh连接登陆虚拟机，随后可以执行Shell命令。
 
 3.1 添加
 ---------------------
 
 1. 点击左上角添加按钮：
-![](/document/styles/images/addCert.png)
+![](/styles/images/addCert.png)
 2. 弹出添加框，填写信息：  
-   填写规范：</br>
+   填写规范：    
    Host: 192.168.0.244，（虚拟机IP地址）  
    Port：22，（端口号）  
    User：voyager，（虚拟机用户名）  
    Password：welcome1，（虚拟机用户名对应的密码）
-![](/document/styles/images/addCertModal.png)
+![](/styles/images/addCertModal.png)
 
 3. 添加成功：
-![](/document/styles/images/addCertSuccess.png)
+![](/styles/images/addCertSuccess.png)
 
 3.2 修改
 ---------------------
 
 1. 点击edit按钮：
-![](/document/styles/images/editCert.png)
+![](/styles/images/editCert.png)
 2. 弹出修改框，修改信息：
-![](/document/styles/images/editCertModal.png)
+![](/styles/images/editCertModal.png)
 3. 保存即点击确认，不保存即点击取消；
 
 3.3 删除
 ---------------------
 
 1. 点击delete按钮： 
-![](/document/styles/images/deleteCert.png)
+![](/styles/images/deleteCert.png)
 2. 弹出确定框，点击确认即删除，点击取消即取消删除：
-![](/document/styles/images/deleteCertModal.png)
+![](/styles/images/deleteCertModal.png)
 
 3.4 查看密码
 ---------------------
 
 1. 鼠标放在图标上，password即显示为明文密码，鼠标移开，密码即为隐藏密码；
-![](/document/styles/images/checkPassword.png)
+![](/styles/images/checkPassword.png)
 
 
 第四章 collector
 ====================================
 
-collector作用：实时执行命令，采集数据，分为active collector，passive collector和agent collector，active collector是根据设定的时间间隔执行一次命令，passive collector是执行一次命令并一直保持执行状态，agent collector是在Filebeat把监听的所有日志更新发送到一个统一的通道后，根据通配符规则，把同类型的日志，分发到一个通道中。
+collector作用：执行命令，采集数据。  
+分为active、passive和agent collector三种类型：  
+1. active collector是根据设定的时间间隔/每天固定时间点/单次执行命令，一般用于编写脚本主动读取日志；  
+2. passive collector是执行一次命令并一直保持执行状态，通常用于tail -F等长期执行的任务；  
+3. agent collector是从Filebeat统一的日志更新通道接收数据，根据文件通配符规则，把同类型的日志，分发到指定的通道中。  
 
  4.1 添加
 ---------------------
 
 1. active collector：  
 填写规范：  
-Name: 无要求（输出数据的redis通道名默认为 ac_name);  
+Name: 无要求（**输出数据的redis通道名默认为 ac_name**）;  
 Type:  
 &nbsp; &nbsp; &nbsp; &nbsp;interval : 每间隔一段时间执行一次命令；  
 &nbsp; &nbsp; &nbsp; &nbsp;time ：每天定点执行命令；  
@@ -187,63 +191,63 @@ Host: 虚拟机IP；
 Encoding: 根据电脑系统选择对应的编码；  
 Channel: redis/nanomsg;  
 Description: collector usage & source & description；
-![](/document/styles/images/addActiveCollector.png)
+![](/styles/images/addActiveCollector.png)
 2. passive collector：  
 填写规范：  
-Name: 无要求（输出数据的redis通道名默认为 pc_name);  
-Type:  
+Name: 无要求（**输出数据的redis通道名默认为 pc_name**);  
+Type:  
 &nbsp; &nbsp; &nbsp; &nbsp;LongScript: 执行用户指定的命令；  
-&nbsp; &nbsp; &nbsp; &nbsp;File Tail: 直接执行 tail -F 命令；  
-Command: 执行命令；  
+&nbsp; &nbsp; &nbsp; &nbsp;File Tail: 执行 tail -F 命令（快捷方式）；  
+Command: 执行命令；  
 Parameter: 参数；  
 Host: 虚拟机IP；  
 Encoding: 根据电脑系统选择对应的编码；  
 Channel: redis/nanomsg;  
 Description: collector usage&source&description；
-![](/document/styles/images/addPassiveCollector.png)
+![](/styles/images/addPassiveCollector.png)
 3. agent collector  
 &nbsp;3.1 点击添加按钮：
-![](/document/styles/images/addAgentCollector.png)
+![](/styles/images/addAgentCollector.png)
 &nbsp;3.2 弹出添加框，填写信息：  
 &nbsp;&nbsp;&nbsp;填写规范  
-&nbsp;&nbsp;&nbsp;Name: 无要求 （输出数据的redis通道名默认为 agt_name）；  
-&nbsp;&nbsp;&nbsp;Parameter: 文件名的正则表达式；  
+&nbsp;&nbsp;&nbsp;Name: 无要求 （**输出数据的redis通道名默认为 agt_name**）；  
+&nbsp;&nbsp;&nbsp;Parameter: 文件名的正则表达式；  
 &nbsp;&nbsp;&nbsp;Encoding: 根据电脑系统选择对应的编码；  
 &nbsp;&nbsp;&nbsp;Channel: redis/nanomsg;  
 &nbsp;&nbsp;&nbsp;Description: collector usage & source & description；
-![](/document/styles/images/addAgentCollectorContent.png)
+![](/styles/images/addAgentCollectorContent.png)
 
   4.2 修改
 ---------------------
 
 1. active collector：  
    勾选要修改的项，再点击edit按钮，在页面上方即可出现对应的信息，修改之后保存点击save按钮，不保存点击clear按钮；
-![](/document/styles/images/editActiveCollector.png)
-![](/document/styles/images/editActiveCollectorContent.png)
+![](/styles/images/editActiveCollector.png)
+![](/styles/images/editActiveCollectorContent.png)
 2. passive collector：  
    勾选要修改的项，再点击edit按钮，在页面上方即可出现对应的信息，修改之后保存点击save按钮，不保存点击clear按钮；
-![](/document/styles/images/editPassiveCollector.png)
-![](/document/styles/images/editPassiveCollectorContent.png)
+![](/styles/images/editPassiveCollector.png)
+![](/styles/images/editPassiveCollectorContent.png)
 3. agent collector:  
    点击edit按钮，即会弹出修改框，修改之后保存点击确定按钮，不保存点击取消按钮；
-![](/document/styles/images/editAgentCollector.png)
-![](/document/styles/images/editAgentCollectorContent.png)
+![](/styles/images/editAgentCollector.png)
+![](/styles/images/editAgentCollectorContent.png)
 
   4.3 删除
 ---------------------
 
 1. active collector：  
    勾选要删除的项，再点击delete按钮，弹出确定框，删除点击确定，不删除点击取消；
-![](/document/styles/images/editActiveCollector.png)
-![](/document/styles/images/deleteActiveCollector.png)
+![](/styles/images/editActiveCollector.png)
+![](/styles/images/deleteActiveCollector.png)
 2. passive collector：  
    勾选要删除的项，再点击delete按钮，弹出确定框，删除点击确定，不删除点击取消；
-![](/document/styles/images/editPassiveCollector.png)
-![](/document/styles/images/deletePassiveCollector.png)
+![](/styles/images/editPassiveCollector.png)
+![](/styles/images/deletePassiveCollector.png)
 3. agent collector:  
    点击delete按钮，弹出确定框，删除点击确定，不删除点击取消；
-![](/document/styles/images/deleteAgentCollector.png)
-![](/document/styles/images/deleteAgentCollectorModal.png)
+![](/styles/images/deleteAgentCollector.png)
+![](/styles/images/deleteAgentCollectorModal.png)
 
 
 第五章 parser
@@ -255,43 +259,51 @@ parser的功能：parser通过调用脚本把文件中的文本数据转换成�
 ---------------------
 
 1. 点击左上角添加按钮：
-![](/document/styles/images/addParser.png)
+![](/styles/images/addParser.png)
 2. 弹出添加框，填写内容，所有选项均为必填：  
 填写规范：  
 Name：esb   (无要求)；  
-Path：esb.js   (parser脚本的路径)；  
+Path：esb.js   (parser脚本的路径，可以使用相对路径，默认当前目录为CONALOG_PATH/parser/)；  
 Parameter：esb=1   (脚本对应的参数)；  
-InputChannel：ac\_mobile   (输入数据通道名)；  
-OutputChannel：p_esb   (输出数据通道名)；  
-InputType：RedisChannel   (RedisChannel/NanomsgQueue);  
+InputChannel：ac\_mobile (输入数据通道名)；  
+OutputChannel：esb (输出数据通道名，**Conalog会自动给输出通道名加前缀p\_**)；  
+InputType：RedisChannel   (RedisChannel/NanomsgQueue);  
 OutputType：RedisChannel   (RedisChannel/NanomsgQueue);  
 Remark：input:... output:{...}   (parser脚本作用描述，输入输出数据格式等);
-![](/document/styles/images/addParserContent.png)
+![](/styles/images/addParserContent.png)
 3. 添加成功：
-![](/document/styles/images/addParserSuccess.png)
+![](/styles/images/addParserSuccess.png)
 
   5.2 修改
 ---------------------
 
 1. 点击edit按钮：
-![](/document/styles/images/editParser.png)
+![](/styles/images/editParser.png)
 2. 弹出修改框，修改信息：
-![](/document/styles/images/editParserModal.png)
+![](/styles/images/editParserModal.png)
 3. 保存即点击确认，不保存即点击取消；
 
   5.3 删除
 ---------------------
 
 1. 点击delete按钮： 
-![](/document/styles/images/deleteParser.png)
+![](/styles/images/deleteParser.png)
 2. 弹出确定框，点击确认即删除，点击取消即取消删除：
-![](/document/styles/images/deleteParserModal.png)
+![](/styles/images/deleteParserModal.png)
+
+  5.4 Parser脚本
+---------------------
+
+1. Parser脚本用ES2015编写，默认存放在CONALOG_PATH/parser-src目录下；  
+2. 脚本编写完成后，在conalog主目录执行gulp compile-parser即可将ES2015的Parser编译成ES5代码，存放在CONALOG_PATH/parser目录下；  
+3. 请参考[Conalog Parser开发指南](https://github.com/Orientsoft/conalog/wiki/ParserDev)进行Parser的开发；  
+4. 可以用Git为每个部署项目开新分支，并提交新开发的parser到github conalog项目，分支准备好后请在conalog项目提交Pull Request。请咨询[项目管理员](https://github.com/xiedidan)获取写入权限。  
 
 
 第六章 status
 ====================================
 
-status作用：展示active collector，passive collector，agent collector以及parser执行的状态和结果。
+status作用：展示active collector，passive collector，agent collector以及parser执行的状态和结果，可以控制启停。
 
   6.1 active ／passive／agent status
 ---------------------
@@ -300,9 +312,9 @@ status作用：展示active collector，passive collector，agent collector以�
 点击operation下的切换按钮，即可来回开启和关闭；
 
 1. 关闭状态：
-![](/document/styles/images/stop.png)
+![](/styles/images/stop.png)
 2. 开启状态：
-![](/document/styles/images/start.png)
+![](/styles/images/start.png)
 
   6.1.2 查看
 1. 执行成功：  
@@ -311,12 +323,12 @@ Last Activity Time: 最后一次执行时间；
 Last Activity Message: 最后一次执行信息；  
 &nbsp; &nbsp; &nbsp;stdout: 执行过程中输出的正确数据；  
 &nbsp; &nbsp; &nbsp;stderr:执行过程中发现的错误；  
-![](/document/styles/images/statusMessage.png)
+![](/styles/images/statusMessage.png)
 2. 执行失败：  
 Exec Count: 0；  
 Last Activity Time: N/A；  
 Last Activity Message: N/A / Pending；  
-![](/document/styles/images/start.png)
+![](/styles/images/start.png)
 3. 查看redis通道数据:  
 打开终端；  
 输入 redis-cli；  
@@ -327,50 +339,43 @@ subscribe redis channel (active collector即为 ac_[collector name], passive col
 
  6.2.1 启动parser实例
 1. 点击start按钮：
-![](/document/styles/images/startParserInstance.png)
+![](/styles/images/startParserInstance.png)
 2. 弹出确认框,点击确定即生成实例，点击取消即取消生成：
-![](/document/styles/images/startParserInstanceModal.png)
+![](/styles/images/startParserInstanceModal.png)
 
 
  6.2.2 查看parser实例
 1. 查看实例总数：
-![](/document/styles/images/instanceNum.png)
+![](/styles/images/instanceNum.png)
 2. 查看实例内容，点击下拉按钮,即可显示所有实例：
-![](/document/styles/images/showParserInstance.png)
-![](/document/styles/images/parserInstanceDetail.png)
+![](/styles/images/showParserInstance.png)
+![](/styles/images/parserInstanceDetail.png)
 3. 查看redis通道数据:  
 打开终端；  
 输入 redis-cli；  
 subscribe redis channel (parser outputChannel);  
 
-```
-//正确的输出格式：
-{
-
-}
-```
-
 
  6.2.3 删除parser实例
 1. 点击stop按钮；
-![](/document/styles/images/deleteParserInstance.png)
+![](/styles/images/deleteParserInstance.png)
 2. 弹出确认框,点击确认即删除，点击取消即取消删除：
-![](/document/styles/images/stopParserInstanceModal.png)
+![](/styles/images/stopParserInstanceModal.png)
 
 
 第七章 history
 ====================================
 
-history作用：保存日志，数据保存时限为7天。
+history作用：保存日志，默认数据保存时限为7天。
 
   7.1 查询
 ---------------------
 
 1. 根据EventID进行查询：
-![](/document/styles/images/history.png)
+![](/styles/images/history.png)
 2. 点击下拉按钮，查看具体内容：
-![](/document/styles/images/showHistory.png)
-![](/document/styles/images/historyContent.png)
+![](/styles/images/showHistory.png)
+![](/styles/images/historyContent.png)
 
 
 第八章 常用流程
